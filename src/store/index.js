@@ -7,6 +7,7 @@ export default createStore({
     userFilter: null,
     loadingUsers: false,
     sorting: false,
+    resetPage: false,
   },
   getters: {
     getUsers(state) {
@@ -25,6 +26,9 @@ export default createStore({
     },
     updateFilterUsers(state, users) {
       state.userFilter = users;
+    },
+    updateResetPage(state, reset) {
+      state.resetPage = reset;
     },
   },
   actions: {

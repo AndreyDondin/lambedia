@@ -89,6 +89,7 @@ export default defineComponent({
       input.value = '';
       sort('id', true);
       store.commit('updateSorting', false);
+      store.commit('updateResetPage', true);
       store.commit('updateFilterUsers', users.value);
     };
 

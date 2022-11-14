@@ -7,6 +7,7 @@ export default function useFilter() {
   const users = computed(() => store.getters['getUsers']);
 
   const filterUser = (value) => {
+    store.commit('updateResetPage', true);
     store.commit('updateSorting', true);
     const filterUsers = users.value.filter(
       (user) =>
@@ -40,5 +41,12 @@ export default function useFilter() {
     );
   };
 
-  return { filterUser, sort, users, usersFilter, userList, deleteUser };
+  return {
+    filterUser,
+    sort,
+    users,
+    usersFilter,
+    userList,
+    deleteUser,
+  };
 }

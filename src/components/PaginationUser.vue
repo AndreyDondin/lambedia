@@ -14,13 +14,22 @@
 </template>
 
 <script>
-import { computed } from 'vue';
+import { computed, watchEffect } from 'vue';
+import { useStore } from 'vuex';
 export default {
   props: ['pages', 'modelValue'],
   emits: ['update:modelValue'],
-  setup(props) {
+  setup(props, { emit }) {
+    const store = useStore();
     const page = computed(() => {
       return props.modelValue;
+    });
+
+    watchEffect(() => {
+      if (store.state.resetPage) {
+        emit('update:modelValue', 1);
+        store.commit('updateResetPage', false);
+      }
     });
 
     return {
